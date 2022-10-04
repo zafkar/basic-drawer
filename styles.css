@@ -1,5 +1,4 @@
 canvas {
-  border: 2px solid;
   top: 10%;
   left: 10%;
 }
@@ -18,12 +17,12 @@ a {
 }
 
 .drawer-wrapper {
-	display: flex;
-
+  display: inline-flex;
+  border: 2px solid;
 }
 
 .drawer-wrapper .toolbar {
-	padding: 5px;
+  padding: 5px;
   float: left;
   background-color: #e3feff;
 }
@@ -89,6 +88,6 @@ a {
 }
 
 .toolbar li div {
-	margin-top: 5px;
-	margin-bottom: 2px;
+  margin-top: 5px;
+  margin-bottom: 2px;
 }
