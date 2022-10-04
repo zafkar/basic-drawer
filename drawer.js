@@ -18,11 +18,7 @@ class Drawer {
       this.currY = e.clientY - this.canvas.offsetTop;
 
       this.ismousedown = true;
-
-      this.canvas.getContext("2d").beginPath();
-      this.canvas.getContext("2d").fillStyle = this.color;
-      this.canvas.getContext("2d").fillRect(this.currX, this.currY, this.stroke_thickness, this.stroke_thickness);
-      this.canvas.getContext("2d").closePath();
+      this._drawDot();
     }).bind(this), false);
 
     this.canvas.addEventListener("mousemove", (function(e) {
@@ -36,20 +32,31 @@ class Drawer {
         this.canvas.getContext("2d").moveTo(this.prevX, this.prevY);
         this.canvas.getContext("2d").lineTo(this.currX, this.currY);
         this.canvas.getContext("2d").strokeStyle = this.color;
-        this.canvas.getContext("2d").lineWidth = this.stroke_thickness;
+        this.canvas.getContext("2d").lineWidth = this.stroke_thickness * 2;
         this.canvas.getContext("2d").stroke();
         this.canvas.getContext("2d").closePath();
+
+        this._drawDot();
       }
     }).bind(this), false);
 
     this.canvas.addEventListener("mouseup", (function(e) {
       this.ismousedown = false;
+      this._drawDot();
     }).bind(this), false);
 
     this.canvas.addEventListener("mouseout", (function(e) {
       this.ismousedown = false;
     }).bind(this), false);
 
+  }
+
+  _drawDot() {
+    this.canvas.getContext("2d").beginPath();
+    this.canvas.getContext("2d").fillStyle = this.color;
+    this.canvas.getContext("2d").ellipse(this.currX, this.currY, this.stroke_thickness, this.stroke_thickness, 0, 0, 7);
+    this.canvas.getContext("2d").fill();
+    this.canvas.getContext("2d").closePath();
   }
 
   clear() {

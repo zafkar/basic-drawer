@@ -77,7 +77,7 @@
       }
 
       document.querySelector("#brushsize").addEventListener("change", (e) => {
-        drawer.stroke_thickness = e.target.value
+        drawer.stroke_thickness = e.target.value / 2;
       })
     })();
   </script>
